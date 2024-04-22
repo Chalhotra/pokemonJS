@@ -1,0 +1,203 @@
+/* Set the width and height of the game window */
+.game-window {
+  width: 100%;
+  height: 1000px;
+  margin: 0 auto; /* Center the game window horizontally */
+  position: relative; /* Ensure position is relative for absolute positioning inside */
+  overflow: hidden;
+}
+
+.bg {
+  background-image: url(assets/land.png);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#battle-bg {
+  background-image: url(assets/battle-bg.jpeg);
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.player {
+  background-image: url("assets/player_front.png");
+  height: 100px;
+  width: 80px;
+  background-size: 240px 100px;
+  background-position: -80px 0;
+  position: absolute;
+  z-index: 999;
+}
+.player.active {
+  animation: 0.2s walk linear infinite;
+}
+
+@keyframes walk {
+  0%,
+  32% {
+    background-position: 0 0;
+  }
+
+  33%,
+  65% {
+    background-position: -80px 0;
+  }
+
+  66%,
+  100% {
+    background-position: -160px 0;
+  }
+}
+/* 
+.bush {
+  width: 40px;
+  height: 50px;
+  background-image: url("assets/bush.png");
+  background-size: 100% 100%;
+  position: absolute;
+  z-index: 0;
+} */
+
+.pokeball {
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+  background-image: url("assets/pokeball.png");
+  background-size: cover;
+  position: absolute;
+  z-index: 2;
+}
+
+/* card css */
+
+#card-bg {
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  /* background-color: rgba(255, 255, 255, 0.4); */
+  height: 100%;
+  width: 100%;
+}
+#battleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: #eff3ff;
+}
+.container {
+  width: 450px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+}
+
+.empty_space {
+  flex: 2;
+}
+#card {
+  position: relative;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* width: 100%; */
+  padding: 30px 20px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  z-index: 1000;
+}
+#card img {
+  display: block;
+  width: 180px;
+  max-height: 200px;
+  position: relative;
+  margin: 20px auto;
+}
+.hp {
+  width: 80px;
+  background-color: #ffffff;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 30px;
+  margin-left: auto;
+  font-weight: 400;
+}
+.poke-name {
+  text-align: center;
+  font-weight: 600;
+}
+.types {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0 40px 0;
+}
+.hp span,
+.types span {
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  font-weight: 600;
+}
+.types span {
+  padding: 5px 20px;
+  border-radius: 20px;
+  color: #ffffff;
+}
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+.stats p {
+  color: #404060;
+}
+.btn {
+  display: block;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #101010;
+  color: #ffffff;
+  position: relative;
+  margin: 30px auto;
+  border: none;
+  border-radius: 5px;
+  height: 50px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+.pokeimg {
+  background-color: #101010;
+}
+
+.btnRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.battleCard {
+  width: 300px;
+  height: 500px;
+  background-color: black;
+}
