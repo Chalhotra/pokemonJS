@@ -104,7 +104,7 @@ body {
   width: 450px;
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 50%;
+  top: 43%;
   left: 50%;
   z-index: 1000;
 }
