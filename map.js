@@ -23,7 +23,7 @@ const typeColor = {
   rock: "#2d3436",
   water: "#0190FF",
 };
-window.onload = async function () {
+document.addEventListener("DOMContentLoaded", async function () {
   try {
     for (let i = 1; i <= 20; i++) {
       await getPokemon(i);
@@ -33,7 +33,7 @@ window.onload = async function () {
   } catch (error) {
     console.error("Error fetching Pokemon data:", error);
   }
-};
+});
 
 const player_pos = {
   x: parseInt(window.innerWidth / 2),
