@@ -54,7 +54,7 @@ async function loadPokemon(id) {
     console.log(pokemon);
     console.log(randomPokemon);
     pokemonList = [pokemon, randomPokemon];
-    let pk1 = spawn(pokemon, pokemonMoves, true);
+    let pk1 = spawn(pokemon, pokemonMoves, true, "back");
     s1 = document.createElement("img");
     s1.src = pk1.sprite;
 
@@ -62,7 +62,7 @@ async function loadPokemon(id) {
     document.getElementById("hp1").innerHTML =
       `<p>HP: ` + pk1.hp + "/" + pk1.fullhp + `</p>`;
 
-    let pk2 = spawn(randomPokemon, randomPokemonMoves, false);
+    let pk2 = spawn(randomPokemon, randomPokemonMoves, false, "front");
     s2 = document.createElement("img");
     s2.src = pk2.sprite;
 
@@ -220,12 +220,15 @@ class Pokemon {
   }
 }
 
-function spawn(pkm, moveData, bool) {
+function spawn(pkm, moveData, bool, side) {
   moveArray = moveData;
 
   const name = pkm.name;
   const hp = pkm.stats[0].base_stat;
-  const imgSrc = pkm.sprites.other.dream_world.front_default;
+  const imgSrc =
+    side == "front"
+      ? pkm.sprites.other.showdown.front_default
+      : pkm.sprites.other.showdown.back_default;
   const pokeName = pkm.name[0].toUpperCase() + pkm.name.slice(1);
   const statAttack = pkm.stats[1].base_stat;
   const statDefense = pkm.stats[2].base_stat;
@@ -329,7 +332,7 @@ function checkWinner(pk1, pk2) {
     ).innerHTML = `<p>HP: ${pk2.hp}/${pk2.fullhp}</p>`;
     // Reload the page after a delay
     setTimeout(function () {
-      location.reload();
+      window.location.href = "index.html";
     }, 1500);
   }
 }

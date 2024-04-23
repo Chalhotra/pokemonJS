@@ -57,7 +57,7 @@
     background-position: -160px 0;
   }
 }
-/* 
+
 .bush {
   width: 40px;
   height: 50px;
@@ -65,7 +65,7 @@
   background-size: 100% 100%;
   position: absolute;
   z-index: 0;
-} */
+}
 
 .pokeball {
   opacity: 0;
