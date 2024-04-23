@@ -1,4 +1,6 @@
 /* Set the width and height of the game window */
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 .game-window {
   width: 100%;
   height: 1000px;
@@ -78,7 +80,14 @@
 }
 
 /* card css */
-
+.loading {
+  background-color: black;
+  color: white;
+  font-family: "Press Start 2P", system-ui;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+}
 #card-bg {
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);

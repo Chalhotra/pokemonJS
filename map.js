@@ -24,6 +24,9 @@ const typeColor = {
   water: "#0190FF",
 };
 document.addEventListener("DOMContentLoaded", async function () {
+  const loadingScreen = document.getElementById("loading-screen");
+  loadingScreen.style.display = "block"; // Show loading screen
+
   try {
     for (let i = 1; i <= 20; i++) {
       await getPokemon(i);
@@ -32,6 +35,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     init();
   } catch (error) {
     console.error("Error fetching Pokemon data:", error);
+  } finally {
+    loadingScreen.style.display = "none"; // Hide loading screen
   }
 });
 
