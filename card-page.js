@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const id = parseInt(pokemonID, 10);
 
   if (id < 1 || id > MAX_POKEMONS) {
-    return (window.location.href = "./index.html");
+    return (window.location.href = "./map.html");
   }
 
   currentPokemonId = id;
@@ -114,7 +114,7 @@ let styleCard = (color) => {
 };
 
 function backPageRoute() {
-  window.location.href = "index.html";
+  window.location.href = "map.html";
 }
 
 function battlePageRoute() {

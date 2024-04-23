@@ -23,6 +23,14 @@ const typeColor = {
   rock: "#2d3436",
   water: "#0190FF",
 };
+document.addEventListener("DOMContentLoaded", function () {
+  const proceedButton = document.getElementById("proceed");
+  const instructionsPage = document.getElementById("instructions-page");
+
+  proceedButton.addEventListener("click", function () {
+    window.location.href = "map.html";
+  });
+});
 document.addEventListener("DOMContentLoaded", async function () {
   const loadingScreen = document.getElementById("loading-screen");
   loadingScreen.style.display = "block"; // Show loading screen

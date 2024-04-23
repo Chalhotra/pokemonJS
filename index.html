@@ -3,16 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>DIY Pokemon Thingy</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="instructions.css" />
   </head>
-  <body class="game-window">
-    <div id="loading-screen" style="display: none">
-      <h1>Loading...</h1>
-    </div>
+  <body>
+    <div id="instructions-page">
+      <h1>Pokémon Game Instructions</h1>
+      <h2>How to Play</h2>
+      <ol>
+        <li>Enter the map with Pokeballs scattered randomly.</li>
+        <li>Move to a Pokeball to catch a Pokémon.</li>
+        <li>
+          Choose your Pokémon:
+          <ul>
+            <li>
+              Continue to Battle: Use your caught Pokémon to battle a random
+              Pokémon.
+            </li>
+            <li>Try Again: Catch another Pokémon if you're not satisfied.</li>
+          </ul>
+        </li>
+        <li>Choose moves to attack your opponent during a battle.</li>
+        <li>Catch more Pokémon and battle through the game.</li>
+        <li>
+          If your Pokémon's HP reaches zero, you'll be transported back to the
+          map.
+        </li>
+      </ol>
+      <h2>Tips</h2>
+      <ul>
+        <li>Pay attention to Pokémon stats.</li>
+        <li>Experiment with moves during battles.</li>
+      </ul>
+      <p>Enjoy the adventure!</p>
 
-    <div class="bg"></div>
-    <div class="player"></div>
+      <button id="proceed">Proceed</button>
+    </div>
     <script src="map.js"></script>
   </body>
 </html>

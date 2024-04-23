@@ -4,17 +4,24 @@ let currentPokemonId = null;
 //   Blastoise: [[""], ["grass"], ["fire", "water"]],
 //   Venusaur: [["poison"], ["fire", "fly", "ice", "steel"], ["grass", "water"]],
 // };
+
 document.addEventListener("DOMContentLoaded", () => {
-  const MAX_POKEMONS = 20;
-  const pokemonID = new URLSearchParams(window.location.search).get("id");
-  const id = parseInt(pokemonID, 10);
+  try {
+    const MAX_POKEMONS = 20;
+    const pokemonID = new URLSearchParams(window.location.search).get("id");
+    const id = parseInt(pokemonID, 10);
 
-  if (id < 1 || id > MAX_POKEMONS) {
-    return (window.location.href = "./index.html");
+    if (id < 1 || id > MAX_POKEMONS) {
+      return (window.location.href = "./map.html");
+    }
+
+    currentPokemonId = id;
+    loadPokemon(id);
+  } catch (error) {
+    console.error("an error occurred");
+  } finally {
+    loadingScreen.style.display = "none"; // Hide loading screen
   }
-
-  currentPokemonId = id;
-  loadPokemon(id);
 });
 
 async function loadPokemon(id) {
@@ -332,7 +339,7 @@ function checkWinner(pk1, pk2) {
     ).innerHTML = `<p>HP: ${pk2.hp}/${pk2.fullhp}</p>`;
     // Reload the page after a delay
     setTimeout(function () {
-      window.location.href = "index.html";
+      window.location.href = "map.html";
     }, 1500);
   }
 }

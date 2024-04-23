@@ -30,6 +30,16 @@
   left: 0;
 }
 
+#instructions-page {
+  font-family: "Press Start 2P", system-ui;
+  position: absolute;
+  z-index: 1000;
+  background: purple;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
 .player {
   background-image: url("assets/player_front.png");
   height: 100px;
@@ -80,7 +90,7 @@
 }
 
 /* card css */
-.loading {
+.loading-screen {
   background-color: black;
   color: white;
   font-family: "Press Start 2P", system-ui;
