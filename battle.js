@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     currentPokemonId = id;
     loadPokemon(id);
-    displayNone();
   } catch (error) {
     console.error("an error occurred");
   } finally {
@@ -58,7 +57,9 @@ async function loadPokemon(id) {
         return await fetchMoveDetails(item.move.name.toString());
       })
     );
-
+    if (pokemonMoves) {
+      displayNone();
+    }
     console.log(pokemon);
     console.log(randomPokemon);
     pokemonList = [pokemon, randomPokemon];
