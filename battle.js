@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     currentPokemonId = id;
     loadPokemon(id);
+    displayNone();
   } catch (error) {
     console.error("an error occurred");
   } finally {
@@ -101,6 +102,8 @@ async function loadPokemon(id) {
     return false;
   }
 }
+
+function displatNone() {}
 
 const typeColor = {
   bug: "#26de81",
@@ -311,6 +314,11 @@ function attack(move, attacker, receiver, hp, owner, rtypeDet) {
     }, 2000);
   }
   checkWinner(attacker, receiver);
+}
+
+function displayNone() {
+  comment = document.getElementById("comment");
+  comment.innerHTML = "<p>Play a move</p>";
 }
 
 // function checkWinner(hp) {

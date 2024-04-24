@@ -37,16 +37,21 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   try {
     for (let i = 1; i <= 20; i++) {
+      loadingScreen.style.display = "block"; // Show loading screen while fetching data
       await getPokemon(i);
+      loadingScreen.style.display = "none"; // Hide loading screen after fetching data
     }
     console.log(pokemons);
     init();
   } catch (error) {
     console.error("Error fetching Pokemon data:", error);
+    loadingScreen.style.display = "none"; // Hide loading screen if there's an error
   } finally {
-    loadingScreen.style.display = "none"; // Hide loading screen
+    loadingScreen.style.display = "none"; // Hide loading screen after all data is fetched
   }
 });
+
+// Remaining code...
 
 const player_pos = {
   x: parseInt(window.innerWidth / 2),

@@ -42,3 +42,7 @@ ul {
 #proceed:hover {
   background-color: #d3c4ec;
 }
+
+* {
+  overflow-x: hidden;
+}
