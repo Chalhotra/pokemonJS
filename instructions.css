@@ -30,6 +30,7 @@ ul {
   margin-top: 20px;
 }
 #proceed {
+  overflow-y: hidden;
   background-color: #e6d7ff;
   color: black;
   font-family: "Press Start 2P", system-ui;

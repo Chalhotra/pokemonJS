@@ -337,12 +337,21 @@ function checkWinner(pk1, pk2) {
   // Determine the winner based on HP
   let winner = pk1.hp <= 0 ? pk2 : pk2.hp <= 0 ? pk1 : null;
 
-  if (winner) {
-    alert("GAME OVER: " + winner.name + " fainted!");
+  if (winner == pk1) {
+    alert("GAME OVER: " + pk1.name + " fainted!");
     // Update the HP display for the winner
     document.getElementById(
       "hp1"
     ).innerHTML = `<p>HP: ${pk1.hp}/${pk1.fullhp}</p>`;
+    document.getElementById("hp2").innerHTML = `<p>HP: 0/${pk2.fullhp}</p>`;
+    // Reload the page after a delay
+    setTimeout(function () {
+      window.location.href = "map.html";
+    }, 1500);
+  } else if (winner == pk2) {
+    alert("GAME OVER: " + pk2.name + " fainted!");
+    // Update the HP display for the winner
+    document.getElementById("hp1").innerHTML = `<p>HP: 0/${pk1.fullhp}</p>`;
     document.getElementById(
       "hp2"
     ).innerHTML = `<p>HP: ${pk2.hp}/${pk2.fullhp}</p>`;

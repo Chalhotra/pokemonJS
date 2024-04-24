@@ -177,34 +177,58 @@ function init() {
   run();
 }
 
+// function run() {
+//   player_pos.x += player_vel.x;
+//   player_pos.y += player_vel.y;
+
+//   player.style.left = player_pos.x + "px";
+//   player.style.bottom = player_pos.y + "px";
+//   checkCollisions();
+//   requestAnimationFrame(run);
+// }
+
 function run() {
-  player_pos.x += player_vel.x;
-  player_pos.y += player_vel.y;
+  const nextX = player_pos.x + player_vel.x;
+  const nextY = player_pos.y + player_vel.y;
+
+  const maxX = window.innerWidth - player.clientWidth;
+  const maxY = window.innerHeight - player.clientHeight;
+
+  if (nextX >= 0 && nextX <= maxX) {
+    player_pos.x = nextX;
+  }
+  if (nextY >= 0 && nextY <= maxY) {
+    player_pos.y = nextY;
+  }
 
   player.style.left = player_pos.x + "px";
   player.style.bottom = player_pos.y + "px";
+
   checkCollisions();
   requestAnimationFrame(run);
 }
 
 window.addEventListener("keydown", function (e) {
-  if (e.key == "ArrowDown") {
+  if (e.key == "s") {
     player_vel.y = -3;
     player.style.backgroundImage = `url("assets/player_back.png")`;
+    player.classList.add("active");
   }
-  if (e.key == "ArrowRight") {
+  if (e.key == "d") {
     player_vel.x = 3;
     player.style.backgroundImage = `url("assets/player_right.png")`;
+    player.classList.add("active");
   }
-  if (e.key == "ArrowLeft") {
+  if (e.key == "a") {
     player_vel.x = -3;
     player.style.backgroundImage = `url("assets/player_left.png")`;
+    player.classList.add("active");
   }
-  if (e.key == "ArrowUp") {
+  if (e.key == "w") {
     player_vel.y = 3;
     player.style.backgroundImage = `url("assets/player_front.png")`;
+    player.classList.add("active");
   }
-  player.classList.add("active");
 });
 
 window.addEventListener("keyup", function () {
