@@ -1,4 +1,5 @@
 let currentPokemonId = null;
+
 // let typeMatch = {
 //   Charizard: [["ground"], ["water", "rock"], ["fire", "grass", "stew"]],
 //   Blastoise: [[""], ["grass"], ["fire", "water"]],
