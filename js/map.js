@@ -3,7 +3,7 @@ const num_pokeballs = 10;
 const player = document.querySelector(".player");
 const balls = [];
 const bushes = [];
-const sound = new Audio("assets/coin.mp3");
+const sound = new Audio("../assets/coin.mp3");
 const pokemons = [];
 const typeColor = {
   bug: "#26de81",
@@ -33,25 +33,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 document.addEventListener("DOMContentLoaded", async function () {
   const loadingScreen = document.getElementById("loading-screen");
-  loadingScreen.style.display = "block"; // Show loading screen
+  loadingScreen.style.display = "block";
 
   try {
     for (let i = 1; i <= 20; i++) {
-      loadingScreen.style.display = "block"; // Show loading screen while fetching data
+      loadingScreen.style.display = "block";
       await getPokemon(i);
-      loadingScreen.style.display = "none"; // Hide loading screen after fetching data
+      loadingScreen.style.display = "none";
     }
     console.log(pokemons);
     init();
   } catch (error) {
     console.error("Error fetching Pokemon data:", error);
-    loadingScreen.style.display = "none"; // Hide loading screen if there's an error
+    loadingScreen.style.display = "none";
   } finally {
-    loadingScreen.style.display = "none"; // Hide loading screen after all data is fetched
+    loadingScreen.style.display = "none";
   }
 });
-
-// Remaining code...
 
 const player_pos = {
   x: parseInt(window.innerWidth / 2),
@@ -88,7 +86,6 @@ function checkCollisions() {
       ball.ball.remove();
       sound.play();
       console.log(ball.pok);
-      // generateCard(ball.pok);
       pokemonID = ball.pok.id;
       window.location.href = `card-page.html?id=${pokemonID}`;
       generateBall();
@@ -177,16 +174,6 @@ function init() {
   run();
 }
 
-// function run() {
-//   player_pos.x += player_vel.x;
-//   player_pos.y += player_vel.y;
-
-//   player.style.left = player_pos.x + "px";
-//   player.style.bottom = player_pos.y + "px";
-//   checkCollisions();
-//   requestAnimationFrame(run);
-// }
-
 function run() {
   const nextX = player_pos.x + player_vel.x;
   const nextY = player_pos.y + player_vel.y;
@@ -237,7 +224,6 @@ window.addEventListener("keyup", function () {
   player.classList.remove("active");
 });
 
-// battle logic here
 class Pokemon {
   constructor(name, type, hp, attack, defense, img, id) {
     this.name = name;
@@ -272,13 +258,12 @@ class Move {
 function calculateDamage(move, attacker, defender) {
   let effectiveness = 1;
 
-  // Check type advantages
   if (move.type === "Electric" && defender.type === "Water") {
-    effectiveness = 2; // Electric moves are super effective against Water Pokémon
+    effectiveness = 2;
   } else if (move.type === "Water" && defender.type === "Fire") {
-    effectiveness = 2; // Water moves are super effective against Fire Pokémon
+    effectiveness = 2;
   } else if (move.type === "Fire" && defender.type === "Grass") {
-    effectiveness = 2; // Fire moves are super effective against Grass Pokémon
+    effectiveness = 2;
   }
 
   let damage = Math.floor(
@@ -294,9 +279,6 @@ function battle(attacker, defender, move) {
   console.log(`${defender.name} took ${damage} damage.`);
 }
 
-//battle logic ends
-
-//fetching pokemon data
 async function getPokemon(pok_num) {
   let url = "https://pokeapi.co/api/v2/pokemon/" + pok_num.toString();
 

@@ -42,7 +42,7 @@ body {
   border-width: 3px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url(assets/battle-bg.png);
+  background-image: url(../assets/battle-bg.png);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -58,9 +58,9 @@ body {
   justify-content: space-between;
 
   border-radius: 10px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+
   width: 300px;
-  /* height: 400px; */
+
   margin-top: 0;
   padding: 20px;
   margin-bottom: 20px;
@@ -75,7 +75,6 @@ body {
 
 .card-footer-buttons {
   z-index: 4;
-  /* background-color: rgba(0, 0, 0, 0.8); */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

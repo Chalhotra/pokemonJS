@@ -26,7 +26,6 @@ async function loadPokemon(id) {
     console.log(pokemon);
     if (currentPokemonId === id) {
       generateCard(pokemon);
-      //   displayPokemonDetails(pokemon);
     }
     return true;
   } catch (error) {

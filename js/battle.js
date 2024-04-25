@@ -1,11 +1,5 @@
 let currentPokemonId = null;
 
-// let typeMatch = {
-//   Charizard: [["ground"], ["water", "rock"], ["fire", "grass", "stew"]],
-//   Blastoise: [[""], ["grass"], ["fire", "water"]],
-//   Venusaur: [["poison"], ["fire", "fly", "ice", "steel"], ["grass", "water"]],
-// };
-
 document.addEventListener("DOMContentLoaded", () => {
   try {
     const MAX_POKEMONS = 20;
@@ -21,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } catch (error) {
     console.error("an error occurred");
   } finally {
-    loadingScreen.style.display = "none"; // Hide loading screen
+    loadingScreen.style.display = "none";
   }
 });
 
@@ -35,7 +29,6 @@ async function loadPokemon(id) {
         res.json()
       ),
     ]);
-    // let randomPokemonID = Math.floor(Math.random() * 20);
     let randomPokemonID = Math.floor(Math.random() * 20);
 
     const [randomPokemon, randomPokemonSpecies] = await Promise.all([
@@ -140,13 +133,12 @@ async function fetchMoveDetails(moveName) {
 const typeDetailsCache = {};
 
 async function getTypeDetails(typeName) {
-  // Check if the type details are already cached
   if (typeDetailsCache[typeName]) {
     return typeDetailsCache[typeName];
   }
 
   const url = `https://pokeapi.co/api/v2/type/${typeName}`;
-  const typeMatch = [[], [], []]; // Initialize as empty arrays
+  const typeMatch = [[], [], []];
 
   try {
     const typeData = await fetch(url).then((res) => res.json());
@@ -154,7 +146,6 @@ async function getTypeDetails(typeName) {
     let doubleDamage = typeData.damage_relations.double_damage_to;
     let halfDamage = typeData.damage_relations.half_damage_to;
 
-    // Populate typeMatch arrays correctly
     noDamage.forEach((item) => {
       typeMatch[0].push(item.name);
     });
@@ -165,7 +156,6 @@ async function getTypeDetails(typeName) {
       typeMatch[2].push(item.name);
     });
 
-    // Cache the result before returning
     typeDetailsCache[typeName] = typeMatch;
     return typeMatch;
   } catch {
@@ -218,7 +208,6 @@ let styleCard = (color, elementID) => {
   });
 };
 
-//battle logic video
 class Pokemon {
   constructor(name, sprite, hp, moves, attack, defense) {
     this.name = name;
@@ -274,8 +263,6 @@ function attack(move, attacker, receiver, hp, owner, rtypeDet) {
     let scale = 1;
 
     for (let i = 0; i < rtype.length; i++) {
-      //   console.log("rtype" + rtype);
-      //   console.log("mtype" + mtype);
       console.log(rtype[i]);
       console.log("mtype: " + mtype);
       if (rtype[i].includes(mtype)) {
@@ -323,40 +310,24 @@ function displayNone() {
   comment.innerHTML = "<p>Play a move</p>";
 }
 
-// function checkWinner(hp) {
-//   let f = pk1.hp <= 0 ? pk1 : pk2.hp <= 0 ? pk2 : false;
-//   if (f != false) {
-//     alert("GAME OVER: " + f.name + "fainted!");
-//     document.getElementById(hp).innerHTML = "<p>HP: 0/" + f.fullhp + "</p>";
-//     setTimeout(function () {
-//       location.reload;
-//     }, 1500);
-//   }
-// }
-
 function checkWinner(pk1, pk2) {
-  // Determine the winner based on HP
   let winner = pk1.hp <= 0 ? pk2 : pk2.hp <= 0 ? pk1 : null;
 
   if (winner == pk1) {
     alert("GAME OVER: " + pk1.name + " fainted!");
-    // Update the HP display for the winner
     document.getElementById(
       "hp1"
     ).innerHTML = `<p>HP: ${pk1.hp}/${pk1.fullhp}</p>`;
     document.getElementById("hp2").innerHTML = `<p>HP: 0/${pk2.fullhp}</p>`;
-    // Reload the page after a delay
     setTimeout(function () {
       window.location.href = "map.html";
     }, 1500);
   } else if (winner == pk2) {
     alert("GAME OVER: " + pk2.name + " fainted!");
-    // Update the HP display for the winner
     document.getElementById("hp1").innerHTML = `<p>HP: 0/${pk1.fullhp}</p>`;
     document.getElementById(
       "hp2"
     ).innerHTML = `<p>HP: ${pk2.hp}/${pk2.fullhp}</p>`;
-    // Reload the page after a delay
     setTimeout(function () {
       window.location.href = "map.html";
     }, 1500);
